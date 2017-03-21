@@ -11,7 +11,7 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 server.bind((bind_ip, bind_port))
 
-server_listen(5)
+server.listen(5)
 
 print "[*] Listening on %s:%d" % (bind_ip, bind_port)
 
