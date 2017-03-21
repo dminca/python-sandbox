@@ -19,20 +19,20 @@ port = 0
 def usage():
     print "NETCAT Net Tool\n", \
             "", \
-            "Usage: netcat.py -t target_host -p port\n", \
-            "-l --listen        - listen on [host]:[port] for\n", \
-            "icoming connections\n", \
-            "-e --execute=file_to_run - execute the given file upon\n", \
-            "receiving a connection\n", \
-            "-c --command       - initialize a command shell\n", \
-            "-u --upload=destination    - upon receiving connection upload\n", \
-            "a file and write to [destination]\n", \
+            "\tUsage: netcat.py -t target_host -p port\n", \
+            "\t-l --listen        - listen on [host]:[port] for\n", \
+            "\ticoming connections\n", \
+            "\t-e --execute=file_to_run - execute the given file upon\n", \
+            "\treceiving a connection\n", \
+            "\t-c --command       - initialize a command shell\n", \
+            "\t-u --upload=destination    - upon receiving connection upload\n", \
+            "\ta file and write to [destination]\n", \
             "", \
-            "Examples: \n", \
-            "netcat.py -t 192.168.0.1 -p 5555 -l -c\n", \
-            "netcat.py -t 192.168.0.1 -p 5555 -l -u=c:\\target.exe\n", \
-            "netcat.py -t 192.168.0.1 -p 5555 -l -e=\"cat /etc/passwd\"\n", \
-            "echo 'ABCDEFGHI' | ./netcat.py -t 192.168.0.1 -p 135\n"
+            "\tExamples: \n", \
+            "\tnetcat.py -t 192.168.0.1 -p 5555 -l -c\n", \
+            "\tnetcat.py -t 192.168.0.1 -p 5555 -l -u=c:\\target.exe\n", \
+            "\tnetcat.py -t 192.168.0.1 -p 5555 -l -e=\"cat /etc/passwd\"\n", \
+            "\techo 'ABCDEFGHI' | ./netcat.py -t 192.168.0.1 -p 135\n"
     sys.exit(0)
 
 def main():
