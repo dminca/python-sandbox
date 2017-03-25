@@ -85,7 +85,6 @@ if not listen and len(target) and port > 0:
     client_sender(buffer)
 
 
-
 def client_sender(buffer):
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -145,6 +144,9 @@ def server_loop():
         # spin off thread to handle new client
         client_thread = threading.Thread(target=client_handler, args=(client_socket,))
         client_thread.start()
+
+if listen:
+    server_loop()
 
 
 def run_command(command):
