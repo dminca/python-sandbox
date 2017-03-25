@@ -1,11 +1,11 @@
 #!/usr/bin/env python2
 # NETCAT REPLACEMENT
 
-import sys
-import socket
 import getopt
-import threading
+import socket
 import subprocess
+import sys
+import threading
 
 # define global vars
 listen = False
@@ -15,7 +15,6 @@ execute = ""
 target = ""
 upload_destination = ""
 port = 0
-
 
 def usage():
     print "NETCAT Net Tool\n", \
@@ -85,10 +84,6 @@ if not listen and len(target) and port > 0:
     # send data off
     client_sender(buffer)
 
-# we listen and upload things, execute cmds, and drop a shell back
-# depending on our cmdline opts above
-if listen:
-    server_loop()
 
 
 def client_sender(buffer):
