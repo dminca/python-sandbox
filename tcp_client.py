@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # SIMPLE TCP CLIENT
 
 import socket
@@ -18,5 +18,4 @@ client.send("GET / HTTP/1.1\r\nHost: google.com\r\n\r\n")
 # receive data
 response = client.recv(4096)
 
-print response
-
+print(response)
