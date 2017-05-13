@@ -1,21 +1,26 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # SIMPLE TCP CLIENT
 
 import socket
 
-host = 'www.google.com'
-port = 80
+def Client():
+    host = '127.0.0.1'
+    port = 5000
 
-# create socket obj
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    mySocket = socket.socket()
+    mySocket.connect((host, port))
 
-# connect
-client.connect((host, port))
+    message = input('-> ')
 
-# send data
-client.send("GET / HTTP/1.1\r\nHost: google.com\r\n\r\n")
+    while message != 'q':
+        mySocket.send(message.encode())
+        data = mySocket.recv(1024).decode()
 
-# receive data
-response = client.recv(4096)
+        print('Received from server: ' + data)
 
-print(response)
+        message = input('-> ')
+
+    mySocket.close()
+
+if __name__ == '__main__':
+    Client()

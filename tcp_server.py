@@ -1,40 +1,34 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # SIMPLE TCP SERVER IMPLEMENTATION IN PYTHON
+# inspired from:
+# https://shakeelosmani.wordpress.com/2015/04/13/python-3-socket-programming-example/
 
 import socket
-import threading
 
-bind_ip = '0.0.0.0'
-bind_port = 9999
+def Server():
+    host = '127.0.0.1'
+    port = 5000
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    mySocket = socket.socket()
+    mySocket.bind((host, port))
 
-server.bind((bind_ip, bind_port))
+    mySocket.listen(1)
+    conn, addr = mySocket.accept()
 
-server.listen(5)
+    print("Connection from: " + str(addr))
 
-print("[*] Listening on %s:%d" % (bind_ip, bind_port))
+    while True:
+        data = conn.recv(1024).decode()
+        if not data:
+            break
 
-# client-handling thread
-def handle_client(client_socket):
+        print('from connected user: ' + str(data))
 
-# print what client sends
-    request = client_socket.recv(1024)
+        data = str(data).upper()
+        print('sending: ' + str(data))
+        conn.send(data.encode())
 
-    print("[*] Received: %s" % request)
+    conn.close()
 
-# send back packet
-    client_socket.send("ACK!")
-
-    client_socket.close()
-
-while True:
-
-    client,addr = server.accept()
-
-    print("[*] Accepted connection from: %s:%d" % (addr[0], addr[1]))
-
-# spin client thread to handle incomming data
-    client_handler = threading.Thread(target = handle_client, args = (client,))
-    client_handler.start()
-
+if __name__ == '__main__':
+    Server()
