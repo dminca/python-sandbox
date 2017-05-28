@@ -24,15 +24,16 @@ def find_all(name, path):
 
 def main():
     filename = 'msgFilterRules.dat'
-    path = '~/.thunderbird'
+    path = os.getenv("HOME") + '/.thunderbird'
 
-    filters = self.find_all(filename, path)
+    filters = find_all(filename, path)
 
     # create archive from filters found
     tar = tarfile.open(current_date + ".tar.gz", "w:gz")
     for name in filters:
       tar.add(name)
     tar.close()
+
 
 if __name__ == '__main__':
     main()
