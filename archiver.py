@@ -16,12 +16,6 @@ def find_all(name, path):
             result.append(os.path.join(root, name))
     return result
 
-# create archive
-#tar = tarfile.open(current_date + ".tar.gz", "w:gz")
-#for name in ["file1", "file2", "file3"]:
-#    tar.add(name)
-#tar.close()
-
 def main():
     filename = 'msgFilterRules.dat'
     path = os.getenv("HOME") + '/.thunderbird'
