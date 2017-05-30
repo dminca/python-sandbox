@@ -8,8 +8,12 @@ import os
 # get current date
 current_date = strftime("%Y-%m-%d", gmtime())
 
-# find files and store in array
 def find_all(name, path):
+    """Return list of paths
+
+    Traverse directory until reaches the file that's being searched,
+    after file is found, return the full path to file in a list.
+    """
     result = []
     for root, dirs, files in os.walk(path):
         if name in files:
@@ -17,6 +21,13 @@ def find_all(name, path):
     return result
 
 def main():
+    """Create archive from Thunderbird filters
+
+    After searching for the filename and returning its fullpath in a list,
+    loop through the list and generate .tar.gz archive from fullpath.
+
+    The archive name follows UNIX time pattern: YYYY-m-d.tar.gz
+    """
     filename = 'msgFilterRules.dat'
     path = os.getenv("HOME") + '/.thunderbird'
     output = os.getenv("HOME") + '/Dropbox/Apps/PersonalThunderbirdFiltersBackup/'
